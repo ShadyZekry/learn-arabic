@@ -7,14 +7,13 @@ class DatabaseHelper {
   static final DatabaseHelper instance =
       DatabaseHelper._createInstance(); //2.Create a singleton instance
 
-  static const _dbName = "";
-  static const _progressTableName = "progress";
-  static const _letterColumnName = "letter";
-  static const _passColumnName = "pass";
+  final _dbName = "";
+  final _progressTableName = "progress";
+  final _letterColumnName = "letter";
+  final _passColumnName = "pass";
 
-  static Database _sqfliteDatabase;
-
-  Future<Database> get getDB async {
+  Database _sqfliteDatabase;
+  Future<Database> get db async {
     // If you have an existing DB return it, else open it from the device
     if (_sqfliteDatabase != null) return _sqfliteDatabase;
 
