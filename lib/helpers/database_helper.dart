@@ -41,4 +41,31 @@ class DatabaseHelper {
       )
       ''');
   }
+
+  void insert(String tableName, Map<String, dynamic> row) async {
+    Database _db = await instance.db;
+    await _db.insert(tableName, row);
+  }
+
+  void update(
+    String tableName,
+    String columnName,
+    String columnValue,
+    Map<String, dynamic> newValues,
+  ) async {
+    Database _db = await instance.db;
+    await _db.update(tableName, newValues,
+        where: '$columnName = ?', whereArgs: [columnValue]);
+  }
+
+  void delete(String tableName, String columnName, String columnValue) async {
+    Database _db = await instance.db;
+    await _db
+        .delete(tableName, where: '$columnName = ?', whereArgs: [columnValue]);
+  }
+
+  Future<List<Map<String, dynamic>>> getTable(String tableName) async {
+    Database _db = await instance.db;
+    return await _db.query(tableName);
+  }
 }
