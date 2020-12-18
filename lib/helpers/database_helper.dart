@@ -7,13 +7,13 @@ class DatabaseHelper {
   static final DatabaseHelper instance =
       DatabaseHelper._createInstance(); //2.Create a singleton instance
 
-  final _dbName = "";
+  final _dbName = "MyDB";
   final _progressTableName = "progress";
   final _letterColumnName = "letter";
   final _passColumnName = "pass";
 
   Database _sqfliteDatabase;
-  Future<Database> get db async {
+  Future<Database> get _db async {
     // If you have an existing DB return it, else open it from the device
     if (_sqfliteDatabase != null) return _sqfliteDatabase;
 
@@ -37,13 +37,13 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE $_progressTableName (
         $_letterColumnName TEXT NOT NULL PRIMARY KEY,
-        $_passColumnName BOOLEAN,
+        $_passColumnName BOOLEAN
       )
       ''');
   }
 
   void insert(String tableName, Map<String, dynamic> row) async {
-    Database _db = await instance.db;
+    Database _db = await instance._db;
     await _db.insert(tableName, row);
   }
 
@@ -53,19 +53,19 @@ class DatabaseHelper {
     String columnValue,
     Map<String, dynamic> newValues,
   ) async {
-    Database _db = await instance.db;
+    Database _db = await instance._db;
     await _db.update(tableName, newValues,
         where: '$columnName = ?', whereArgs: [columnValue]);
   }
 
-  void delete(String tableName, String columnName, String columnValue) async {
-    Database _db = await instance.db;
+  void delete(String tableName, String columnName, dynamic columnValue) async {
+    Database _db = await instance._db;
     await _db
         .delete(tableName, where: '$columnName = ?', whereArgs: [columnValue]);
   }
 
   Future<List<Map<String, dynamic>>> getTable(String tableName) async {
-    Database _db = await instance.db;
+    Database _db = await instance._db;
     return await _db.query(tableName);
   }
 }
