@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/helpers/database_helper.dart';
+import 'package:learn_arabic/helpers/database_manager.dart';
 
 void main() {
   runApp(MyApp());
@@ -68,8 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
               child: Text("query all"),
               onPressed: () async {
-                var result = await DatabaseHelper.instance.getTable("progress");
-                print(result);
+                print(await DatabaseManager.getProgress());
               },
             ),
           ],
