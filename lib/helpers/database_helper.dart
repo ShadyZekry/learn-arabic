@@ -9,8 +9,10 @@ class DatabaseHelper {
 
   final _dbName = "MyDB";
   final _progressTableName = "progress";
+  final _miscTableName = "misc";
   final _letterColumnName = "letter";
   final _passColumnName = "pass";
+  final _scoreColumnName = "score";
 
   Database _sqfliteDatabase;
   Future<Database> get _db async {
@@ -38,8 +40,12 @@ class DatabaseHelper {
       CREATE TABLE $_progressTableName (
         $_letterColumnName TEXT NOT NULL PRIMARY KEY,
         $_passColumnName BOOLEAN
-      )
+      );
+      CREATE TABLE $_miscTableName (
+        $_scoreColumnName INT NOT NULL = 0 
       ''');
+
+    db.insert(_progressTableName, _initProgressMap());
   }
 
   void insert(String tableName, Map<String, dynamic> row) async {
@@ -67,5 +73,38 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> getTable(String tableName) async {
     Database _db = await instance._db;
     return await _db.query(tableName);
+  }
+
+  Map<String, bool> _initProgressMap() {
+    return {
+      'أ': false,
+      'ب': false,
+      'ت': false,
+      'ث': false,
+      'ج': false,
+      'ح': false,
+      'خ': false,
+      'د': false,
+      'ذ': false,
+      'ر': false,
+      'ز': false,
+      'س': false,
+      'ش': false,
+      'ص': false,
+      'ض': false,
+      'ط': false,
+      'ظ': false,
+      'ع': false,
+      'غ': false,
+      'ف': false,
+      'ق': false,
+      'ك': false,
+      'ل': false,
+      'م': false,
+      'ن': false,
+      'ه': false,
+      'و': false,
+      'ي': false,
+    };
   }
 }

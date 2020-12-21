@@ -15,4 +15,9 @@ class DatabaseManager {
   static void passLevel(String letter) async {
     _dbHelper.update("progress", "letter", letter, {"pass": true});
   }
+
+  static Future<int> getScore() async {
+    List<Map<String, dynamic>> _miscTable = await _dbHelper.getTable("misc");
+    return _miscTable[0]["score"];
+  }
 }
