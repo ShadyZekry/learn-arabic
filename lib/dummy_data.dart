@@ -7,15 +7,15 @@ class DummyData {
   List<ChooseImageScreen> data = [
     new ChooseImageScreen(
       name: 'زرافه',
-      correctImagePath: 'images/زرافه.jpg',
-      imagePath1: 'images/ارنب.jpg',
-      imagePath2: 'images/فيل.png',
+      correctImagePath: 'assets/images/زرافه.jpg',
+      imagePath1: 'assets/images/ارنب.jpg',
+      imagePath2: 'assets/images/فيل.png',
     ),
     new ChooseImageScreen(
       name: 'فيل',
-      correctImagePath: 'images/فيل.png',
-      imagePath1: 'images/زرافه.jpg',
-      imagePath2: 'images/ارنب.jpg',
+      correctImagePath: 'assets/images/فيل.png',
+      imagePath1: 'assets/images/زرافه.jpg',
+      imagePath2: 'assets/images/ارنب.jpg',
     ),
   ];
 

@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: ChooseImageScreen(
         name: 'ارنب',
-        correctImagePath: 'images/ارنب.jpg',
-        imagePath1: 'images/زرافه.jpg',
-        imagePath2: 'images/فيل.png',
+        correctImagePath: 'assets/images/ارنب.jpg',
+        imagePath1: 'assets/images/زرافه.jpg',
+        imagePath2: 'assets/images/فيل.png',
       ),
     );
   }

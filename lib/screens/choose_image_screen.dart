@@ -38,32 +38,19 @@ List<int> getRandomNumbers() {
 class _ChooseImageScreenState extends State<ChooseImageScreen> {
   final item = new DummyData().item;
   final numbers = getRandomNumbers();
-  bool isFirstSelected = false; // is first image selected
-  bool isSecondSelected = false; // is second image selected
-  bool isThirdSelected = false; // is third image selected
 
-  AudioPlayer wrongAdvancedPlayer;
-  AudioPlayer rightAdvancedPlayer;
-  AudioCache wrongAudioCache;
-  AudioCache rightAudioCache;
+  final String rightImage = 'assets/images/right.jpg';
+  final String wrongImage = 'assets/images/wrong.jpg';
 
-  @override
-  void initState() {
-    super.initState();
-    wrongAdvancedPlayer = new AudioPlayer();
-    rightAdvancedPlayer = new AudioPlayer();
-    wrongAudioCache = new AudioCache(fixedPlayer: wrongAdvancedPlayer);
-    rightAudioCache = new AudioCache(fixedPlayer: rightAdvancedPlayer);
+  AudioCache _audioPlayer =
+      AudioCache(prefix: 'assets/music/', fixedPlayer: AudioPlayer());
+
+  void _playWrongSound() async {
+    await _audioPlayer.play('wrong.mp3');
   }
 
-  void _playWrongSound() {
-    rightAdvancedPlayer.stop();
-    wrongAudioCache.play('music/wrong.mp3');
-  }
-
-  void _playRightSound() {
-    wrongAdvancedPlayer.stop();
-    rightAudioCache.play('music/right.mp3');
+  void _playRightSound() async {
+    await _audioPlayer.play('right.mp3');
   }
 
   String playWrongSoundAndReturnImagePath(imagePath) {
@@ -78,8 +65,7 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
 
   @override
   void dispose() {
-    wrongAdvancedPlayer.dispose();
-    rightAdvancedPlayer.dispose();
+    _audioPlayer.clearCache();
     super.dispose();
   }
 
@@ -120,58 +106,14 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
           Expanded(
             flex: 2,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(width: 10),
-                ImageCard(
-                  imagePath: !isFirstSelected
-                      ? randomImages[0]
-                      : randomImages[0].contains(widget.name)
-                          ? playRightSoundAndReturnImagePath(
-                              'images/right.jpg',
-                            )
-                          : playWrongSoundAndReturnImagePath(
-                              'images/wrong.jpg',
-                            ),
-                  onPress: () {
-                    setState(() {
-                      isFirstSelected = !isFirstSelected;
-                    });
-                  },
-                ),
-                SizedBox(width: 10),
-                ImageCard(
-                  imagePath: !isSecondSelected
-                      ? randomImages[1]
-                      : randomImages[1].contains(widget.name)
-                          ? playRightSoundAndReturnImagePath(
-                              'images/right.jpg',
-                            )
-                          : playWrongSoundAndReturnImagePath(
-                              'images/wrong.jpg',
-                            ),
-                  onPress: () {
-                    setState(() {
-                      isSecondSelected = !isSecondSelected;
-                    });
-                  },
-                ),
-                SizedBox(width: 10),
-                ImageCard(
-                  imagePath: !isThirdSelected
-                      ? randomImages[2]
-                      : randomImages[2].contains(widget.name)
-                          ? playRightSoundAndReturnImagePath(
-                              'images/right.jpg',
-                            )
-                          : playWrongSoundAndReturnImagePath(
-                              'images/wrong.jpg',
-                            ),
-                  onPress: () {
-                    setState(() {
-                      isThirdSelected = !isThirdSelected;
-                    });
-                  },
+                ...randomImages.map(
+                  (String imagePath) => ImageCard(
+                    imagePath: imagePath,
+                    isRightAnswer: imagePath.contains(widget.name),
+                    audioPlayer: _audioPlayer,
+                  ),
                 ),
                 SizedBox(width: 10),
               ],
