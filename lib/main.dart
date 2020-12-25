@@ -1,14 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_arabic/first_page.dart';
+import 'package:learn_arabic/MyApp.dart';
 
-void main() => runApp(LearnArabic());
-
-class LearnArabic extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FirstPage(),
-    );
-  }
-}
+void main() => runApp(MyApp());

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_arabic/helpers/database_helper.dart';
-import 'package:learn_arabic/helpers/database_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,50 +10,253 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("widget.title"),
+        backgroundColor: Colors.deepPurple,
+        title: Text("Learn Arabic "),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            RaisedButton(
-              child: Text("insert"),
-              onPressed: () {
-                DatabaseHelper.instance.insert(
-                  "progress",
-                  {"letter": "أ", "pass": false},
-                );
-              },
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, '/dashboard_screen'),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsets.all(15.0),
+                      height: 200.0,
+                      width: 170.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Points",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15.0,
+                              ),
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('assets/images/ali.png'),
+                                radius: 40.0,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          Text(
+                            "5",
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                    height: 200.0,
+                    width: 170.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "level",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/level.png'),
+                              radius: 35.0,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          "5",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text("update"),
-              onPressed: () {
-                DatabaseHelper.instance.update(
-                  "progress",
-                  "letter",
-                  "أ",
-                  {"pass": true},
-                );
-              },
+          ),
+          GestureDetector(
+            onTap: () {
+              print('mostafa');
+            },
+            child: Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                margin: EdgeInsets.all(15.0),
+                height: 200.0,
+                width: 170.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/play.png'),
+                          radius: 35.0,
+                        ),
+                        Text(
+                          " let's start",
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ),
-            RaisedButton(
-              child: Text("delete"),
-              onPressed: () {
-                DatabaseHelper.instance.delete(
-                  "progress",
-                  "pass",
-                  false,
-                );
-              },
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                    height: 200.0,
+                    width: 170.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/world.png'),
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            Text(
+                              "who are we",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          "5",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                    height: 200.0,
+                    width: 170.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                                radius: 20.0,
+                                backgroundImage:
+                                    AssetImage('assets/images/contact.png')),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            Text(
+                              "Contact us",
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          "5",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text("query all"),
-              onPressed: () async {
-                print(await DatabaseManager.getProgress());
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
