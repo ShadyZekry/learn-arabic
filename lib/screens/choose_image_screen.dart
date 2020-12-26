@@ -9,7 +9,7 @@ import 'package:audioplayers/audio_cache.dart';
 class ChooseImageScreen extends StatefulWidget {
   final String name;
   final String correctImagePath;
-  final String imagePath1;
+  final String imagePath1; 
   final String imagePath2;
   ChooseImageScreen({
     @required this.name,
