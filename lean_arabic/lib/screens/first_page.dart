@@ -36,19 +36,20 @@ class _FirstPageState extends State<FirstPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            CircleAvatar(
+                              backgroundImage: AssetImage('images/ali.png'),
+                              radius: 25.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+
                             Text(
                               "Points",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            CircleAvatar(
-                              backgroundImage: AssetImage('images/ali.png'),
-                              radius: 40.0,
                             ),
                           ],
                         ),
@@ -58,7 +59,7 @@ class _FirstPageState extends State<FirstPage> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
@@ -81,19 +82,20 @@ class _FirstPageState extends State<FirstPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            CircleAvatar(
+                              backgroundImage: AssetImage('images/level.png'),
+                              radius: 25.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+
                             Text(
                               "level",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            CircleAvatar(
-                              backgroundImage: AssetImage('images/level.png'),
-                              radius: 35.0,
                             ),
 
                           ],
@@ -104,7 +106,7 @@ class _FirstPageState extends State<FirstPage> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
@@ -178,14 +180,15 @@ class _FirstPageState extends State<FirstPage> {
                           children: [
                             CircleAvatar(
                               backgroundImage: AssetImage('images/world.png'),
+                              radius: 20.0,
                             ),
                             SizedBox(
-                              width: 15.0,
+                              width: 5.0,
                             ),
                             Text(
                               "who are we",
                               style: TextStyle(
-                                fontSize: 18.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
                             ),
@@ -197,7 +200,7 @@ class _FirstPageState extends State<FirstPage> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
@@ -227,12 +230,12 @@ class _FirstPageState extends State<FirstPage> {
                                 radius: 20.0,
                                 backgroundImage: AssetImage('images/contact.png')),
                             SizedBox(
-                              width: 15.0,
+                              width: 5.0,
                             ),
                             Text(
                               "Contact us",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
                             ),
@@ -244,7 +247,7 @@ class _FirstPageState extends State<FirstPage> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
