@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_arabic/helpers/database_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -6,6 +7,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int points = 0;
+
+  @override
+  void initState() {
+    DatabaseManager.getScore().then((value) => setState(() => points = value));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 15.0,
                         ),
                         Text(
-                          "5",
+                          points.toString(),
                           style: TextStyle(
                             fontSize: 18.0,
                             color: Colors.white,

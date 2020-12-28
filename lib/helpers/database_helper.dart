@@ -40,26 +40,31 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE $_progressTableName (
         $_letterColumnName TEXT NOT NULL PRIMARY KEY,
-        $_passChooseColumn BOOLEAN DEFAULT false
-        $_passDragColumn BOOLEAN DEFAULT false
-      );
-
-      CREATE TABLE $_miscTableName (
-        $_scoreColumnName INT NOT NULL = 0 
+        $_passChooseColumn BOOLEAN DEFAULT 0,
+        $_passDragColumn BOOLEAN DEFAULT 0
+      )
       ''');
 
-    _initProgressMap();
+    await db.execute('''
+      CREATE TABLE $_miscTableName (
+        $_scoreColumnName INT NOT NULL DEFAULT 0
+      )
+      ''');
+
+    await _initProgressMap();
+    await db.insert(_miscTableName, {_scoreColumnName: 0});
   }
 
-  void _initProgressMap() async {
+  Future<void> _initProgressMap() async {
     Database _db = await instance._db;
+
     String values = characters.fold(
-        '', (previousValue, char) => "('$char', FALSE, FALSE),\n");
+        '', (previousValue, char) => "$previousValue ($char, 0, 0),\n");
 
     // fill table values
     await _db.execute('''
         INSERT INTO $_progressTableName ($_letterColumnName, $_passChooseColumn, $_passDragColumn)
-        VALUES  $values
+        VALUES  $values;
     ''');
   }
 
