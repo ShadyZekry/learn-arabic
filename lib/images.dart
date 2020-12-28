@@ -16,6 +16,13 @@ class Images {
     "assets/images/غزال.jpg",
     "assets/images/فراوله.jpg",
     "assets/images/قمر.jpg",
+    "assets/images/كتب.jpg",
+    "assets/images/لسان.jpg",
+    "assets/images/مانجو.jpg",
+    "assets/images/نجمه.jpg",
+    "assets/images/هرم.jpg",
+    "assets/images/ولد.jpg",
+    "assets/images/يد.jpg",
   ];
   List<String> getRandomImages(String name) {
     List<String> radomImages = [];
