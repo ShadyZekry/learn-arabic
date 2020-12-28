@@ -21,52 +21,55 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () =>
-                        Navigator.pushNamed(context, '/dashboard_screen'),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      margin: EdgeInsets.all(15.0),
-                      height: 200.0,
-                      width: 170.0,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Points",
-                                style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15.0,
-                              ),
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/images/ali.png'),
-                                radius: 40.0,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          Text(
-                            "5",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.white,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin: EdgeInsets.all(15.0),
+                    height: 200.0,
+                    width: 170.0,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: AssetImage('images/ali.png'),
+                              radius: 25.0,
                             ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              "Points",
+                              style: TextStyle(
+                                fontSize: 17.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/ali.png'),
+                              radius: 40.0,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          "5",
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -85,16 +88,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            CircleAvatar(
+                              backgroundImage: AssetImage('images/level.png'),
+                              radius: 25.0,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
                             Text(
                               "level",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
                             ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
+                            SizedBox(width: 15.0),
                             CircleAvatar(
                               backgroundImage:
                                   AssetImage('assets/images/level.png'),
@@ -108,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
@@ -178,16 +186,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/world.png'),
+                              backgroundImage: AssetImage('images/world.png'),
+                              radius: 20.0,
                             ),
                             SizedBox(
-                              width: 15.0,
+                              width: 5.0,
                             ),
                             Text(
                               "who are we",
                               style: TextStyle(
-                                fontSize: 18.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
                             ),
@@ -199,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
@@ -228,12 +236,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 backgroundImage:
                                     AssetImage('assets/images/contact.png')),
                             SizedBox(
-                              width: 15.0,
+                              width: 5.0,
                             ),
                             Text(
                               "Contact us",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 17.0,
                                 color: Colors.white,
                               ),
                             ),
@@ -245,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           "5",
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 17.0,
                             color: Colors.white,
                           ),
                         ),
