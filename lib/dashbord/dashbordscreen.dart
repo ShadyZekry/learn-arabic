@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn_arabic/dashbord/alphabetmodel.dart';
+import 'alphabetmodel.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class Edition extends StatefulWidget {
   @override
@@ -10,53 +11,100 @@ class _EditionState extends State<Edition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.count(
+      appBar: AppBar(
+        title: Text(
+            "DashBord"
+        ),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      body:GridView.count
+        (
         crossAxisCount: 4,
-        children: List.generate(letter.length, (index) {
+        children: List.generate(letter.length, (index){
           return new Container(
             child: SelectCard(alphabet: letter[index]),
           );
         }),
       ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: (){
+              _ShowScoreDialog(context);
+            },
+            child: new Image.asset(
+              "assets/images/coins.png",
+              fit: BoxFit.contain,
+            )
+        ),
+        backgroundColor: Color.fromRGBO(35, 114, 163,1)
     );
   }
 }
 
-////////////////////////
 
+
+
+////////////////////////
+int sore=120;
+//////score dialog//////////////
+
+ _ShowScoreDialog(BuildContext context) {
+
+   return showDialog(context: context,barrierDismissible: true, builder: (param){
+     return AlertDialog(
+       title: Text("Your score"),
+       content: Column(
+         mainAxisSize: MainAxisSize.min,
+         children: <Widget>[
+           Text(
+             "$sore",
+             style: TextStyle(
+                 fontSize: 32,
+                 fontWeight: FontWeight.bold
+             ) ,
+           )
+         ],
+       ),
+       actions: <Widget>[
+         FlatButton(
+             onPressed: ()=>Navigator.pop(context),
+             color: Colors.red,
+             child: Text('OK')),
+       ],
+
+     );
+   });
+
+}
+
+////grid view/////////
 class SelectCard extends StatelessWidget {
   const SelectCard({Key key, this.alphabet}) : super(key: key);
   final Alphabet alphabet;
 
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: new Card(
-        elevation: 15.0,
-        shadowColor: Colors.black,
-        margin: EdgeInsets.all(10.0),
-        //color: Colors.blue,
-        color: Color.fromRGBO(44, 89, 211, .8),
-        shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(20.0)),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
         child: new Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.center,
-              child: new Text(
-                alphabet.title,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 23.0,
-                  color: Colors.white,
-                ),
+          children:<Widget> [ //progressbar circular
+            new CircularPercentIndicator(
+              radius: 70.0,
+              lineWidth: 10.0,
+              animation: true,
+              percent:double.parse(alphabet.id.toString())/2 , //number of right answers
+              center: new Text(
+                alphabet.title, //alphabet
+                style:
+                new TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0,color:Colors.white),
               ),
+              circularStrokeCap: CircularStrokeCap.round,
+              progressColor:Color.fromRGBO(94, 186, 125,1),
             ),
-            alphabet.id == 0
-                ? Icon(Icons.lock_open,
-                    color: Color.fromRGBO(254, 194, 0, 1).withOpacity(.7))
-                : Icon(Icons.lock,
-                    color: Color.fromRGBO(254, 194, 0, 1).withOpacity(1)),
           ],
         ),
       ),
