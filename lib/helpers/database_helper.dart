@@ -11,7 +11,8 @@ class DatabaseHelper {
   final _progressTableName = "progress";
   final _miscTableName = "misc";
   final _letterColumnName = "letter";
-  final _passColumnName = "pass";
+  final _passChooseColumn = "pass_choose";
+  final _passDragColumn = "pass_drag";
   final _scoreColumnName = "score";
 
   Database _sqfliteDatabase;
@@ -39,13 +40,27 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE $_progressTableName (
         $_letterColumnName TEXT NOT NULL PRIMARY KEY,
-        $_passColumnName BOOLEAN
+        $_passChooseColumn BOOLEAN DEFAULT false
+        $_passDragColumn BOOLEAN DEFAULT false
       );
+
       CREATE TABLE $_miscTableName (
         $_scoreColumnName INT NOT NULL = 0 
       ''');
 
-    db.insert(_progressTableName, _initProgressMap());
+    _initProgressMap();
+  }
+
+  void _initProgressMap() async {
+    Database _db = await instance._db;
+    String values = characters.fold(
+        '', (previousValue, char) => "('$char', FALSE, FALSE),\n");
+
+    // fill table values
+    await _db.execute('''
+        INSERT INTO $_progressTableName ($_letterColumnName, $_passChooseColumn, $_passDragColumn)
+        VALUES  $values
+    ''');
   }
 
   void insert(String tableName, Map<String, dynamic> row) async {
@@ -75,36 +90,45 @@ class DatabaseHelper {
     return await _db.query(tableName);
   }
 
-  Map<String, bool> _initProgressMap() {
-    return {
-      'أ': false,
-      'ب': false,
-      'ت': false,
-      'ث': false,
-      'ج': false,
-      'ح': false,
-      'خ': false,
-      'د': false,
-      'ذ': false,
-      'ر': false,
-      'ز': false,
-      'س': false,
-      'ش': false,
-      'ص': false,
-      'ض': false,
-      'ط': false,
-      'ظ': false,
-      'ع': false,
-      'غ': false,
-      'ف': false,
-      'ق': false,
-      'ك': false,
-      'ل': false,
-      'م': false,
-      'ن': false,
-      'ه': false,
-      'و': false,
-      'ي': false,
-    };
+  Future<List<Map<String, dynamic>>> query(
+    String tableName, {
+    List<String> columns,
+    String where,
+    List<String> whereArgs,
+  }) async {
+    Database _db = await instance._db;
+    return await _db.query(tableName,
+        columns: columns, where: where, whereArgs: whereArgs);
   }
+
+  static List<String> characters = [
+    'أ',
+    'ب',
+    'ت',
+    'ث',
+    'ج',
+    'ح',
+    'خ',
+    'د',
+    'ذ',
+    'ر',
+    'ز',
+    'س',
+    'ش',
+    'ص',
+    'ض',
+    'ط',
+    'ظ',
+    'ع',
+    'غ',
+    'ف',
+    'ق',
+    'ك',
+    'ل',
+    'م',
+    'ن',
+    'ه',
+    'و',
+    'ي',
+  ];
 }
