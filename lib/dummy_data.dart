@@ -6,16 +6,12 @@ class DummyData {
   static int numberOfPages = 0;
   List<ChooseImageScreen> data = [
     new ChooseImageScreen(
-      name: 'زرافه',
-      correctImagePath: 'assets/images/زرافه.jpg',
-      imagePath1: 'assets/images/ارنب.jpg',
-      imagePath2: 'assets/images/فيل.png',
+      name: 'سفينه',
+      correctImagePath: 'assets/images/سفينه.jpg',
     ),
     new ChooseImageScreen(
-      name: 'فيل',
-      correctImagePath: 'assets/images/فيل.png',
-      imagePath1: 'assets/images/زرافه.jpg',
-      imagePath2: 'assets/images/ارنب.jpg',
+      name: 'قمر',
+      correctImagePath: 'assets/images/قمر.jpg',
     ),
   ];
 

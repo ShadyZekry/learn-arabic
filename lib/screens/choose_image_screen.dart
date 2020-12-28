@@ -5,17 +5,14 @@ import '../dummy_data.dart';
 import 'end_of_items_screen.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
+import '../images.dart';
 
 class ChooseImageScreen extends StatefulWidget {
   final String name;
   final String correctImagePath;
-  final String imagePath1;
-  final String imagePath2;
   ChooseImageScreen({
     @required this.name,
     @required this.correctImagePath,
-    @required this.imagePath1,
-    @required this.imagePath2,
   });
 
   @override
@@ -71,10 +68,11 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final randomTwoImages = Images().getRandomImages(widget.name);
     List<String> images = [
       widget.correctImagePath,
-      widget.imagePath1,
-      widget.imagePath2
+      randomTwoImages[0],
+      randomTwoImages[1]
     ];
     List<String> randomImages = [
       images[numbers[0]],
@@ -85,39 +83,34 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
       backgroundColor: Color(0xff5566bf4),
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text(' اختار الصوره الصحيحه '),
+        title: Text('Choose The Right Image '),
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              alignment: Alignment.center,
-              child: Text(
-                widget.name,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                ),
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              widget.name,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 40,
               ),
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ...randomImages.map(
-                  (String imagePath) => ImageCard(
-                    imagePath: imagePath,
-                    isRightAnswer: imagePath.contains(widget.name),
-                    audioPlayer: _audioPlayer,
-                  ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ...randomImages.map(
+                (String imagePath) => ImageCard(
+                  imagePath: imagePath,
+                  isRightAnswer: imagePath.contains(widget.name),
+                  audioPlayer: _audioPlayer,
                 ),
-                SizedBox(width: 10),
-              ],
-            ),
+              ),
+              SizedBox(width: 10),
+            ],
           )
         ],
       ),
@@ -129,8 +122,6 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
                   ? ChooseImageScreen(
                       name: item.name,
                       correctImagePath: item.correctImagePath,
-                      imagePath1: item.imagePath1,
-                      imagePath2: item.imagePath2,
                     )
                   : EndOfItemsScreen(),
             ),
@@ -138,7 +129,7 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
         },
         color: Colors.green,
         child: Text(
-          'التالي',
+          'Next',
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
