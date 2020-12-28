@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/dashbord/dashbordscreen.dart';
 import 'package:learn_arabic/home_screen.dart';
+import 'package:learn_arabic/screens/choose_image_screen.dart';
+import 'package:learn_arabic/screens/drag_correct_image_screen.dart';
 import 'package:learn_arabic/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashScreen(),
         '/home_screen': (context) => HomeScreen(),
         '/dashboard_screen': (context) => Edition(),
+        '/drag_screen': (context) => DragCorrectImageScreen(),
+        '/choose_screen': (context) => ChooseImageScreen(),
       },
     );
   }

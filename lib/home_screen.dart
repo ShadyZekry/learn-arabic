@@ -10,8 +10,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: Text("Learn Arabic "),
+        backgroundColor: Theme.of(context).accentColor,
+        title: Text("Learn Arabic"),
         centerTitle: true,
       ),
       body: Column(
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.deepPurple,
+                      color: Theme.of(context).accentColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     margin: EdgeInsets.all(15.0),
@@ -32,32 +32,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              backgroundImage: AssetImage('images/ali.png'),
-                              radius: 25.0,
-                            ),
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            Text(
-                              "Points",
-                              style: TextStyle(
-                                fontSize: 17.0,
-                                color: Colors.white,
+                        FittedBox(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 10.0),
+                              CircleAvatar(
+                                backgroundColor: Colors.white,
+                                backgroundImage:
+                                    AssetImage('assets/images/ali.png'),
+                                radius: 40,
                               ),
-                            ),
-                            SizedBox(
-                              width: 15.0,
-                            ),
-                            CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/ali.png'),
-                              radius: 40.0,
-                            ),
-                          ],
+                              SizedBox(width: 10.0),
+                              Text(
+                                "Points",
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(width: 15.0),
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: 15.0,
@@ -76,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.deepPurple,
+                      color: Theme.of(context).accentColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     margin: EdgeInsets.all(15.0),
@@ -85,41 +81,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              backgroundImage: AssetImage('images/level.png'),
-                              radius: 25.0,
-                            ),
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            Text(
-                              "level",
-                              style: TextStyle(
-                                fontSize: 17.0,
-                                color: Colors.white,
+                        FittedBox(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.white,
+                                backgroundImage:
+                                    AssetImage('assets/images/level.png'),
+                                radius: 35,
                               ),
-                            ),
-                            SizedBox(width: 15.0),
-                            CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/level.png'),
-                              radius: 35.0,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          "5",
-                          style: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.white,
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              Text(
+                                "level",
+                                style: TextStyle(
+                                  fontSize: 17.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(width: 15.0),
+                            ],
                           ),
                         ),
+                        SizedBox(height: 15.0),
                       ],
                     ),
                   ),
@@ -134,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple,
+                  color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 margin: EdgeInsets.all(15.0),
@@ -144,22 +130,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/play.png'),
-                          radius: 35.0,
-                        ),
-                        Text(
-                          " let's start",
-                          style: TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.white,
+                    FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            backgroundImage:
+                                AssetImage('assets/images/play.png'),
+                            radius: 35.0,
                           ),
-                        ),
-                      ],
+                          Text(
+                            " let's start",
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -167,101 +157,94 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Expanded(
-            child: Row(
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    margin: EdgeInsets.all(15.0),
-                    height: 200.0,
-                    width: 170.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              backgroundImage: AssetImage('images/world.png'),
-                              radius: 20.0,
+            child: FittedBox(
+              child: Row(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).accentColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsets.all(15.0),
+                      height: 200.0,
+                      width: 170.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FittedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  backgroundImage:
+                                      AssetImage('assets/images/world.png'),
+                                  radius: 20.0,
+                                ),
+                                SizedBox(
+                                  width: 5.0,
+                                ),
+                                Text(
+                                  "who are we",
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Text(
-                              "who are we",
-                              style: TextStyle(
-                                fontSize: 17.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          "5",
-                          style: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.white,
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    margin: EdgeInsets.all(15.0),
-                    height: 200.0,
-                    width: 170.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                                radius: 20.0,
-                                backgroundImage:
-                                    AssetImage('assets/images/contact.png')),
-                            SizedBox(
-                              width: 5.0,
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).accentColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsets.all(15.0),
+                      height: 200.0,
+                      width: 170.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FittedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 20.0,
+                                    backgroundImage: AssetImage(
+                                        'assets/images/contact.png')),
+                                SizedBox(width: 5.0),
+                                Text(
+                                  "Contact us",
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Contact us",
-                              style: TextStyle(
-                                fontSize: 17.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          "5",
-                          style: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.white,
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
