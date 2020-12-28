@@ -56,7 +56,7 @@ class _DragCorrectImageScreenState extends State<DragCorrectImageScreen> {
       backgroundColor: Colors.pink,
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text('Drag The Right Image '),
+        title: Text('Drag The Right Image'),
         centerTitle: true,
       ),
       body: Column(

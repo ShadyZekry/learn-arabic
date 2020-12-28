@@ -8,6 +8,7 @@ class DraggableImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Container(
+        color: Colors.white,
         height: ((MediaQuery.of(context).size.width) / 3) - 20,
         child: Image.asset(
           image,
