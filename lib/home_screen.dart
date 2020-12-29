@@ -139,7 +139,10 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 200.0,
               width: 170.0,
               child: GestureDetector(
-                onTap: () => GameManager(context),
+                onTap: () => GameManager(
+                    context,
+                    () => DatabaseManager.getScore()
+                        .then((value) => setState(() => points = value))),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

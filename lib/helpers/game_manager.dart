@@ -3,15 +3,16 @@ import 'package:learn_arabic/helpers/database_manager.dart';
 import 'package:learn_arabic/images.dart';
 import 'package:learn_arabic/screens/choose_image_screen.dart';
 import 'package:learn_arabic/screens/drag_correct_image_screen.dart';
-import 'package:learn_arabic/screens/end_of_items_screen.dart';
 
 class GameManager {
   static List<Map<String, dynamic>> _chooseAvailableLetters;
   static List<Map<String, dynamic>> _dragAvailableLetters;
   static List<dynamic> availableGames;
+  static Function _callback;
 
-  GameManager(BuildContext context) {
+  GameManager(BuildContext context, Function callback) {
     _proceed(context);
+    _callback = callback;
   }
 
   static void _proceed(BuildContext context) async {
@@ -36,6 +37,7 @@ class GameManager {
       wanatMoreGames = await Navigator.push<bool>(
           context, MaterialPageRoute(builder: (context) => nextGame));
 
+      _callback();
       //While we still have games and the user keeps playing
     } while ((wanatMoreGames ?? false) == true &&
         availableGames != null &&
