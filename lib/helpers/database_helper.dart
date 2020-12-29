@@ -85,6 +85,14 @@ class DatabaseHelper {
         where: '$columnName = ?', whereArgs: [columnValue]);
   }
 
+  void updateScore(String newScore) async {
+    Database _db = await instance._db;
+    await _db.update(
+      _miscTableName,
+      {_scoreColumnName: newScore},
+    );
+  }
+
   void delete(String tableName, String columnName, dynamic columnValue) async {
     Database _db = await instance._db;
     await _db

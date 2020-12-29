@@ -11,7 +11,7 @@ class DraggableImage extends StatelessWidget {
         color: Colors.white,
         height: ((MediaQuery.of(context).size.width) / 3) - 20,
         child: Image.asset(
-          image,
+          'assets/images/' + image,
           fit: BoxFit.cover,
         ),
       ),

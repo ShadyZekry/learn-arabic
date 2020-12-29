@@ -42,24 +42,6 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
   AudioCache _audioPlayer =
       AudioCache(prefix: 'assets/music/', fixedPlayer: AudioPlayer());
 
-  void _playWrongSound() async {
-    await _audioPlayer.play('wrong.mp3');
-  }
-
-  void _playRightSound() async {
-    await _audioPlayer.play('right.mp3');
-  }
-
-  String playWrongSoundAndReturnImagePath(imagePath) {
-    _playWrongSound();
-    return imagePath;
-  }
-
-  String playRightSoundAndReturnImagePath(imagePath) {
-    _playRightSound();
-    return imagePath;
-  }
-
   @override
   void dispose() {
     _audioPlayer.clearCache();
@@ -115,18 +97,7 @@ class _ChooseImageScreenState extends State<ChooseImageScreen> {
         ],
       ),
       floatingActionButton: RaisedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (ctx) => item != null
-                  ? ChooseImageScreen(
-                      name: item.name,
-                      correctImagePath: item.correctImagePath,
-                    )
-                  : EndOfItemsScreen(),
-            ),
-          );
-        },
+        onPressed: () => Navigator.pop(context, true),
         color: Colors.green,
         child: Text(
           'Next',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_arabic/helpers/database_manager.dart';
 import '../dummy_data.dart';
 import '../images.dart';
 import 'choose_image_screen.dart' as c;
@@ -19,6 +20,7 @@ class DragCorrectImageScreen extends StatefulWidget {
 }
 
 class _DragCorrectImageScreenState extends State<DragCorrectImageScreen> {
+  bool isProgressUpdated = false;
   final item = new DummyData().item;
   AudioCache _audioPlayer =
       AudioCache(prefix: 'assets/music/', fixedPlayer: AudioPlayer());
@@ -29,6 +31,11 @@ class _DragCorrectImageScreenState extends State<DragCorrectImageScreen> {
 
   void _playRightSound() async {
     await _audioPlayer.play('right.mp3');
+
+    if (!isProgressUpdated) {
+      DatabaseManager.passChooseLevel(widget.name.substring(0, 1));
+      isProgressUpdated = true;
+    }
   }
 
   @override
@@ -129,18 +136,7 @@ class _DragCorrectImageScreenState extends State<DragCorrectImageScreen> {
         ],
       ),
       floatingActionButton: RaisedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (ctx) => item != null
-                  ? DragCorrectImageScreen(
-                      name: item.name,
-                      correctImagePath: item.correctImagePath,
-                    )
-                  : EndOfItemsScreen(),
-            ),
-          );
-        },
+        onPressed: () => Navigator.pop(context, true),
         color: Colors.teal,
         child: Text(
           'Next',

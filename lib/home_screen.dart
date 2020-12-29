@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/helpers/database_manager.dart';
+import 'package:learn_arabic/helpers/game_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -70,7 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           points.toString(),
                           style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
                         ),
@@ -126,48 +128,43 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              print('mostafa');
-            },
-            child: Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                margin: EdgeInsets.all(15.0),
-                height: 200.0,
-                width: 170.0,
-                child: GestureDetector(
-                  // onTap: () => Navigator.pushNamed(context, '/drag_screen'),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FittedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.white,
-                              backgroundImage:
-                                  AssetImage('assets/images/play.png'),
-                              radius: 35.0,
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).accentColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              margin: EdgeInsets.all(15.0),
+              height: 200.0,
+              width: 170.0,
+              child: GestureDetector(
+                onTap: () => GameManager(context),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            backgroundImage:
+                                AssetImage('assets/images/play.png'),
+                            radius: 35.0,
+                          ),
+                          Text(
+                            " let's start",
+                            style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.white,
                             ),
-                            Text(
-                              " let's start",
-                              style: TextStyle(
-                                fontSize: 30.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
