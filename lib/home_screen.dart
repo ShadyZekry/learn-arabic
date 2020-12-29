@@ -175,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () => Navigator.pushNamed(context, '/AboutUs_creen'),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).accentColor,
@@ -218,7 +218,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () =>
+                        Navigator.pushNamed(context, '/ContactUs_creen'),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).accentColor,
