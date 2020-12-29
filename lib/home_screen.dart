@@ -87,35 +87,39 @@ class _HomeScreenState extends State<HomeScreen> {
                     margin: EdgeInsets.all(15.0),
                     height: 200.0,
                     width: 170.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FittedBox(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                backgroundImage:
-                                    AssetImage('assets/images/level.png'),
-                                radius: 35,
-                              ),
-                              SizedBox(
-                                width: 10.0,
-                              ),
-                              Text(
-                                "level",
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, '/dashboard_screen'),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FittedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  backgroundImage:
+                                      AssetImage('assets/images/level.png'),
+                                  radius: 35,
                                 ),
-                              ),
-                              SizedBox(width: 15.0),
-                            ],
+                                SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  "Dashboard",
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(width: 15.0),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 15.0),
-                      ],
+                          SizedBox(height: 15.0),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -135,32 +139,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: EdgeInsets.all(15.0),
                 height: 200.0,
                 width: 170.0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    FittedBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            backgroundImage:
-                                AssetImage('assets/images/play.png'),
-                            radius: 35.0,
-                          ),
-                          Text(
-                            " let's start",
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              color: Colors.white,
+                child: GestureDetector(
+                  // onTap: () => Navigator.pushNamed(context, '/drag_screen'),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              backgroundImage:
+                                  AssetImage('assets/images/play.png'),
+                              radius: 35.0,
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                            Text(
+                              " let's start",
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

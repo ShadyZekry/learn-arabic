@@ -4,7 +4,10 @@ class DatabaseManager {
   static DatabaseHelper _dbHelper = DatabaseHelper.instance;
 
   static Future<List<Map<String, dynamic>>> getProgress() async {
-    return _dbHelper.getTable("progress");
+    List<Map<String, dynamic>> _progressTable =
+        await _dbHelper.getTable("progress");
+
+    return _progressTable;
   }
 
   static void passDragLevel(String letter) async {

@@ -51,18 +51,19 @@ class DatabaseHelper {
       )
       ''');
 
-    await _initProgressMap();
+    await _initProgressMap(db);
     await db.insert(_miscTableName, {_scoreColumnName: 0});
   }
 
-  Future<void> _initProgressMap() async {
-    Database _db = await instance._db;
-
-    String values = characters.fold(
-        '', (previousValue, char) => "$previousValue ($char, 0, 0),\n");
+  Future<void> _initProgressMap(Database db) async {
+    String values = characters.fold('', (previousValue, char) {
+      String addition = '';
+      if (previousValue != '') addition += ',';
+      return "$previousValue$addition\n('$char', 0, 0)";
+    });
 
     // fill table values
-    await _db.execute('''
+    await db.execute('''
         INSERT INTO $_progressTableName ($_letterColumnName, $_passChooseColumn, $_passDragColumn)
         VALUES  $values;
     ''');
