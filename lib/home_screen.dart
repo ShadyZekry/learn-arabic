@@ -31,52 +31,55 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).accentColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    margin: EdgeInsets.all(15.0),
-                    height: 200.0,
-                    width: 170.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FittedBox(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10.0),
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                backgroundImage:
-                                    AssetImage('assets/images/ali.png'),
-                                radius: 40,
-                              ),
-                              SizedBox(width: 10.0),
-                              Text(
-                                "Points",
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () => _ShowScoreDialog(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).accentColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsets.all(15.0),
+                      height: 200.0,
+                      width: 170.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FittedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 10.0),
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  backgroundImage:
+                                      AssetImage('assets/images/ali.png'),
+                                  radius: 40,
                                 ),
-                              ),
-                              SizedBox(width: 15.0),
-                            ],
+                                SizedBox(width: 10.0),
+                                Text(
+                                  "Points",
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(width: 15.0),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          points.toString(),
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                          SizedBox(
+                            height: 15.0,
                           ),
-                        ),
-                      ],
+                          Text(
+                            points.toString(),
+                            style: TextStyle(
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -105,9 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       AssetImage('assets/images/level.png'),
                                   radius: 35,
                                 ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
+                                SizedBox(width: 10.0),
                                 Text(
                                   "Dashboard",
                                   style: TextStyle(
@@ -262,6 +263,35 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  _ShowScoreDialog() async {
+    int score = await DatabaseManager.getScore();
+
+    return showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (param) {
+        return AlertDialog(
+          title: Text("Your score"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                score.toString(),
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+                onPressed: () => Navigator.pop(context),
+                color: Colors.red,
+                child: Text('OK')),
+          ],
+        );
+      },
     );
   }
 }

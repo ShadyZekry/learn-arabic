@@ -36,6 +36,7 @@ class _EditionState extends State<Edition> {
     return Scaffold(
         appBar: AppBar(
           title: Text("DashBord"),
+          centerTitle: true,
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back_ios),
             onPressed: () => Navigator.of(context).pop(),
@@ -63,11 +64,11 @@ class _EditionState extends State<Edition> {
   }
 }
 
-////////////////////////
-int sore = 120;
 //////score dialog//////////////
 
-_ShowScoreDialog(BuildContext context) {
+_ShowScoreDialog(BuildContext context) async {
+  int score = await DatabaseManager.getScore();
+
   return showDialog(
       context: context,
       barrierDismissible: true,
@@ -78,7 +79,7 @@ _ShowScoreDialog(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                "$sore",
+                score.toString(),
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               )
             ],

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:learn_arabic/helpers/database_manager.dart';
-import '../dummy_data.dart';
 import '../images.dart';
 import 'choose_image_screen.dart' as c;
 import '../widgets/draggable_image.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
-import 'end_of_items_screen.dart';
 
 class DragCorrectImageScreen extends StatefulWidget {
   final String name;
@@ -21,7 +19,6 @@ class DragCorrectImageScreen extends StatefulWidget {
 
 class _DragCorrectImageScreenState extends State<DragCorrectImageScreen> {
   bool isProgressUpdated = false;
-  final item = new DummyData().item;
   AudioCache _audioPlayer =
       AudioCache(prefix: 'assets/music/', fixedPlayer: AudioPlayer());
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/image_card.dart';
 import 'dart:math';
-import '../dummy_data.dart';
-import 'end_of_items_screen.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
 import '../images.dart';
@@ -33,7 +31,6 @@ List<int> getRandomNumbers() {
 }
 
 class _ChooseImageScreenState extends State<ChooseImageScreen> {
-  final item = new DummyData().item;
   final numbers = getRandomNumbers();
 
   final String rightImage = 'assets/images/right.jpg';
